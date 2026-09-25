@@ -1,36 +1,18 @@
 {
-  "name": "24Shoots",
-  "tagline": {
-    "es": "Domina el impacto",
-    "en": "Master the impact"
-  },
-  "description": {
-    "es": "Producción audiovisual, fotografía y contenido para redes en Valencia. Vídeo, bodas, eventos, dron y community management.",
-    "en": "Audiovisual production, photography and social content in Valencia. Video, weddings, events, drone and community management."
-  },
+  "name": "24SHOOTS",
   "url": "https://24shoots-web.vercel.app",
-  "locale": {
-    "default": "es",
-    "supported": ["es", "en"]
-  },
-  "theme": {
-    "background": "#141414",
-    "foreground": "#F0EBE4",
-    "accent": "#E8833A",
-    "accentHover": "#D4722F",
-    "muted": "#9A948C",
-    "surface": "#1C1C1C",
-    "border": "#2A2622",
-    "premium": "#C4A574"
+  "description": {
+    "es": "24SHOOTS es un estudio creativo de Valencia. Contenido de marca, campañas y eventos corporativos: idea, rodaje y pieza final.",
+    "en": "24SHOOTS is a Valencia studio for brand content, campaigns and corporate events: the idea, the shoot and the finished piece."
   },
   "contact": {
     "whatsapp": "+34661101863",
     "phone": "+34661101863",
-    "email": "hola@24shootsmedia.com",
+    "email": "info@24shoots.es",
     "instagram": "https://www.instagram.com/24shootsmedia/",
     "location": {
-      "es": "Valencia, España",
-      "en": "Valencia, Spain"
+      "es": "Valencia",
+      "en": "Valencia"
     }
   },
   "legal": {
@@ -38,11 +20,9 @@
     "cif": "26761401G",
     "address": "[DIRECCIÓN FISCAL — PENDIENTE]",
     "lastUpdated": {
-      "es": "julio de 2026",
-      "en": "July 2026"
+      "es": "septiembre de 2026",
+      "en": "September 2026"
     }
   },
-  "logo": "/logo.svg",
-  "heroVideo": "/videos/web/aftermovie-oicial-version-final-web.mp4",
   "heroPoster": "/videos/web/posters/oficial.jpg"
 }

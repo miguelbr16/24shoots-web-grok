@@ -1,43 +1,40 @@
 import type { MetadataRoute } from "next";
-import { getServices, getSiteConfig } from "@/lib/content";
-import { getRoute } from "@/lib/i18n";
-import type { Locale } from "@/lib/types";
+import { workCatalog } from "@/content/works";
+import { getSiteConfig } from "@/lib/content";
+import { getRoute, locales } from "@/lib/i18n";
+import { absoluteUrl, contentRevision } from "@/lib/seo";
+import type { RouteKey } from "@/lib/types";
+
+const pages: { key: RouteKey; priority: number }[] = [
+  { key: "home", priority: 1 },
+  { key: "work", priority: 0.8 },
+  { key: "services", priority: 0.8 },
+  { key: "studio", priority: 0.6 },
+  { key: "contact", priority: 0.6 },
+  { key: "legal", priority: 0.2 },
+  { key: "privacy", priority: 0.2 },
+  { key: "cookies", priority: 0.2 },
+];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const site = getSiteConfig();
-  const base = site.url;
-  const locales: Locale[] = ["es", "en"];
-  const staticRoutes = [
-    "home",
-    "services",
-    "portfolio",
-    "about",
-    "contact",
-    "packs",
-    "legal",
-    "privacy",
-    "cookies",
-  ] as const;
-
+  const lastModified = new Date(contentRevision());
   const entries: MetadataRoute.Sitemap = [];
 
   for (const locale of locales) {
-    for (const key of staticRoutes) {
-      const path = key === "home" ? `/${locale}` : getRoute(locale, key);
+    for (const page of pages) {
       entries.push({
-        url: `${base}${path}`,
-        lastModified: new Date(),
-        changeFrequency: key === "home" ? "weekly" : "monthly",
-        priority: key === "home" ? 1 : 0.8,
+        url: `${site.url}${getRoute(locale, page.key)}`,
+        lastModified,
+        changeFrequency: page.key === "legal" || page.key === "privacy" || page.key === "cookies" ? "yearly" : "monthly",
+        priority: page.priority,
       });
     }
 
-    const services = getServices(locale);
-    const servicesBase = getRoute(locale, "services");
-    for (const service of services) {
+    for (const work of workCatalog) {
       entries.push({
-        url: `${base}${servicesBase}/${service.slug}`,
-        lastModified: new Date(),
+        url: absoluteUrl(getRoute(locale, "work", `/${work.slug}`)),
+        lastModified,
         changeFrequency: "monthly",
         priority: 0.7,
       });
