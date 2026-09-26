@@ -252,11 +252,16 @@ textarea {
 
 .hero-copy {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   grid-column: 1;
   grid-row: 1;
-  align-self: center;
-  padding: 0 0 1.5rem var(--gutter);
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-right: -7vw;
+  padding: 0 1.5rem 0 var(--gutter);
+  background: var(--bg);
 }
 
 .brand {
@@ -291,6 +296,7 @@ textarea {
 }
 
 .hero-meta {
+  max-width: 24rem;
   margin: 1.35rem 0 0;
   color: var(--muted);
   font-size: 0.98rem;
@@ -311,8 +317,8 @@ textarea {
   min-height: 44px;
   padding: 0.65rem 0.85rem;
   border: 1px solid var(--accent);
-  background: transparent;
-  color: var(--ink);
+  background: var(--accent);
+  color: #1a1008;
   text-decoration: none;
   line-height: 1.1;
   cursor: pointer;
@@ -320,26 +326,27 @@ textarea {
 
 .cut::after {
   content: "→";
-  color: var(--accent);
+  color: #1a1008;
 }
 
 .sheet .cut,
 .page-paper .cut,
 .menu .cut {
   border-color: var(--accent-ink);
-  color: var(--paper-ink);
+  background: var(--accent-ink);
+  color: var(--paper);
 }
 
 .sheet .cut::after,
 .page-paper .cut::after,
 .menu .cut::after {
-  color: var(--accent-ink);
+  color: var(--paper);
 }
 
 .cut:hover,
 .cut:focus-visible {
-  background: var(--accent);
-  border-color: var(--accent);
+  background: #c86422;
+  border-color: #c86422;
   color: #1a1008;
 }
 
@@ -354,8 +361,8 @@ textarea {
 .sheet .cut:focus-visible,
 .page-paper .cut:focus-visible,
 .menu .cut:focus-visible {
-  background: var(--accent-ink);
-  border-color: var(--accent-ink);
+  background: #6e3010;
+  border-color: #6e3010;
   color: var(--paper);
 }
 
@@ -416,27 +423,21 @@ textarea {
 .frame {
   position: relative;
   display: block;
-  min-height: min(86vh, 880px);
-  overflow: hidden;
   color: var(--ink);
   text-decoration: none;
-  background: #000;
+  background: transparent;
 }
 
 .frame img {
   width: 100%;
-  height: 100%;
-  min-height: min(86vh, 880px);
+  height: 60vh;
   object-fit: cover;
+  background: #000;
 }
 
 .frame-caption {
-  position: absolute;
-  left: 0;
-  right: 28%;
-  bottom: 0;
-  padding: 4.5rem var(--gutter) 1.8rem;
-  background: linear-gradient(to top, rgba(14, 14, 12, 0.88), transparent);
+  display: block;
+  padding: 0.8rem var(--gutter) 1.5rem;
 }
 
 .frame.is-split {
@@ -444,32 +445,37 @@ textarea {
   grid-template-columns: minmax(14rem, 0.72fr) minmax(0, 1.15fr);
   align-items: end;
   min-height: 0;
-  padding: 4.5rem 0 4.5rem var(--gutter);
+  padding: 2.4rem 0 2.4rem var(--gutter);
   gap: 1.5rem 2rem;
 }
 
 .frame.is-split img {
+  grid-column: 2;
   min-height: 0;
-  height: 64vh;
+  height: 56vh;
   object-position: center 30%;
 }
 
 .frame.is-left {
   grid-template-columns: minmax(0, 1.2fr) minmax(14rem, 0.7fr);
-  padding: 3.5rem var(--gutter) 4.5rem 0;
+  padding: 2.4rem var(--gutter) 2.4rem 0;
 }
 
 .frame.is-left img {
-  order: -1;
+  grid-column: 1;
+  order: 0;
   height: 58vh;
   object-position: center 60%;
 }
 
+.frame.is-left .frame-caption {
+  grid-column: 2;
+  padding-left: 0.2rem;
+}
+
 .frame.is-split .frame-caption {
-  position: static;
-  right: auto;
+  grid-column: 1;
   padding: 0 0.5rem 0.4rem 0;
-  background: none;
 }
 
 .frame h2 {
@@ -492,19 +498,18 @@ textarea {
   color: var(--muted);
 }
 
-.frame.is-left .frame-caption {
-  padding-left: 0.2rem;
-}
-
 .frame.is-inset {
-  width: 84%;
-  min-height: 0;
+  width: 78%;
   margin-left: auto;
 }
 
 .frame.is-inset img {
-  min-height: 0;
-  height: 72vh;
+  height: 58vh;
+}
+
+.frame.is-inset .frame-caption {
+  padding-left: 0;
+  padding-right: var(--gutter);
 }
 
 .sheet,
@@ -582,19 +587,16 @@ textarea {
 }
 
 .continue-steps {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 0.15rem 0;
   margin: 1.35rem 0 0;
   padding: 0;
   list-style: none;
 }
 
 .continue-steps li {
+  display: inline;
   font-size: clamp(1.15rem, 2.2vw, 1.55rem);
   letter-spacing: -0.03em;
-  line-height: 1.2;
+  line-height: 1.35;
 }
 
 .continue-steps li:not(:last-child)::after {
@@ -1219,7 +1221,10 @@ textarea {
 
   .hero-copy {
     max-width: none;
-    padding: 1.15rem var(--gutter) 2.2rem;
+    display: block;
+    margin-right: 0;
+    padding: 1.05rem var(--gutter) 1.5rem;
+    background: transparent;
   }
 
   .brand {
@@ -1239,6 +1244,7 @@ textarea {
   }
 
   .frame.is-inset {
+    display: block;
     width: 100%;
     margin-left: 0;
     padding-left: 10vw;
