@@ -29,7 +29,7 @@ export default async function NotFound() {
       <h1>{copy.notFound.title}</h1>
       <p>{copy.notFound.body}</p>
       <p>
-        <Link className="text-action" href={getRoute(locale, "home")}>
+        <Link className="cut" href={getRoute(locale, "home")}>
           {copy.notFound.home}
         </Link>
       </p>

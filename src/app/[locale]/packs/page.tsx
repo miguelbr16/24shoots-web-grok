@@ -1,4 +1,6 @@
+import Image from "next/image";
 import Link from "next/link";
+import { heroImage } from "@/content/works";
 import { getDictionary } from "@/lib/content";
 import { getRoute } from "@/lib/i18n";
 import { readLocale } from "@/lib/locale";
@@ -28,11 +30,24 @@ export default async function PacksPage({
   const copy = getDictionary(locale);
 
   return (
-    <div className="page page-paper">
-      <header className="page-intro">
-        <h1>{copy.packsPage.title}</h1>
-        <p>{copy.packsPage.intro}</p>
-        <p className="pack-quote">{copy.packsPage.quote}</p>
+    <div className="page packs-page">
+      <header className="packs-open">
+        <div>
+          <h1>{copy.packsPage.title}</h1>
+          <p>{copy.packsPage.intro}</p>
+          <p className="pack-quote">{copy.packsPage.quote}</p>
+        </div>
+        <figure className="packs-still">
+          <Image
+            src={heroImage.src}
+            alt={copy.hero.imageAlt}
+            width={heroImage.width}
+            height={heroImage.height}
+            priority
+            sizes="(min-width: 860px) 52vw, 100vw"
+          />
+          <figcaption>{copy.packsPage.stillCaption}</figcaption>
+        </figure>
       </header>
       <div className="pack-list">
         {copy.packsPage.items.map((item, index) => (
@@ -50,8 +65,8 @@ export default async function PacksPage({
           </article>
         ))}
       </div>
-      <p>
-        <Link className="text-action" href={getRoute(locale, "contact")}>
+      <p className="packs-close">
+        <Link className="cut" href={getRoute(locale, "contact")}>
           {copy.packsPage.cta}
         </Link>
       </p>

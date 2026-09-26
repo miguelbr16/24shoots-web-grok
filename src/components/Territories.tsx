@@ -30,9 +30,10 @@ export function Territories({
 
   return (
     <ol className="territories">
-      {copy.territories.map((territory) => (
+      {copy.territories.map((territory, index) => (
         <li className="territory" id={anchor(territory.id)} key={territory.id}>
           <h3>
+            <span className="index">{String(index + 1).padStart(2, "0")}</span>
             {linked ? (
               territory.title
             ) : (

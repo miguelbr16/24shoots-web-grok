@@ -13,7 +13,7 @@ const es: Dictionary = {
     services: "Encargos",
     studio: "Estudio",
     contact: "Contacto",
-    cta: "Cuéntanos el proyecto",
+    cta: "Cuéntanos tu proyecto",
     open: "Menú",
     close: "Cerrar",
   },
@@ -22,8 +22,8 @@ const es: Dictionary = {
     emphasis: "para marcas.",
     territories: "Contenido de marca · Campañas · Eventos corporativos",
     place: "Valencia",
-    primary: "Cuéntanos el proyecto",
-    secondary: "Ver trabajo",
+    primary: "Cuéntanos tu proyecto",
+    secondary: "Ver el trabajo",
     imageAlt:
       "Cabina de realización durante un directo, con monitores de previo y operación de cámara.",
   },
@@ -43,6 +43,7 @@ const es: Dictionary = {
     {
       id: "brand",
       title: "Contenido de marca",
+      line: "Una imagen que se reconoce de una pieza a la siguiente.",
       situation:
         "La marca necesita una imagen que se reconozca de una pieza a la siguiente, no un archivo de vídeos sueltos.",
       approach:
@@ -52,6 +53,7 @@ const es: Dictionary = {
     {
       id: "campaigns",
       title: "Campañas",
+      line: "Varias duraciones y formatos, desde el mismo rodaje.",
       situation:
         "Hay que producir piezas que vivan en medios, con duraciones y formatos distintos.",
       approach:
@@ -61,6 +63,7 @@ const es: Dictionary = {
     {
       id: "events",
       title: "Eventos corporativos",
+      line: "Aftermovie y cortes. Las cuatro piezas de esta web son de aquí.",
       situation:
         "Un congreso, una gala o una presentación necesita memoria visual, no solo un registro.",
       approach:
@@ -69,30 +72,26 @@ const es: Dictionary = {
         "Aftermovie y cortes breves. Las cuatro piezas publicadas en esta web son de este territorio.",
     },
   ],
-  studioBand: {
-    kicker: "Estudio",
-    lead: "Un estudio en Valencia.",
-    body: "Dirigimos y producimos contenido y comunicación visual para marcas. La idea, el rodaje y la pieza final pasan por el mismo criterio.",
-    sequence: "Primero el encargo. Después el rodaje. Después la entrega.",
+  piece: {
+    title: "Un evento termina.",
+    emphasis: "El contenido sigue.",
+    body: "Del rodaje salen el aftermovie, la fotografía y los cortes que la marca puede seguir usando.",
+    steps: ["Evento", "Captura", "Pieza", "Comunicación"],
   },
   close: {
-    title: "Cuéntanos",
-    emphasis: "el proyecto",
-    body: "Si hay una marca, una campaña o un evento, escribe. Respondemos por correo.",
-    cta: "Cuéntanos el proyecto",
-  },
-  homePacks: {
-    kicker: "Packs",
-    line: "Tres maneras de encargarlo.",
-    note: "Sin precios en la web. El alcance se cotiza.",
+    title: "¿Tienes algo",
+    emphasis: "que contar?",
+    body: "Si hay una marca, una campaña o un evento, escribe.",
+    cta: "Cuéntanos tu proyecto",
   },
   packsPage: {
     title: "Packs",
     description:
       "Tres formas de encargar 24SHOOTS: pack completo, pack audiovisual y pack community management. El alcance se cotiza; esta página no publica precios.",
-    intro: "Tres alcances. El estudio los cotiza según el proyecto. Aquí no hay precios.",
+    intro: "Tres formas de trabajar con el estudio. El alcance se cotiza según el proyecto. Aquí no hay precios.",
     quote: "Presupuesto a medida.",
-    cta: "Cuéntanos el proyecto",
+    stillCaption: "Rodaje de 24SHOOTS",
+    cta: "Cuéntanos tu proyecto",
     items: [
       {
         id: "completo",
@@ -182,7 +181,7 @@ const es: Dictionary = {
       "Cuando el proyecto lo pide, el equipo se desplaza.",
     ],
     workLink: "Ver el trabajo",
-    contactLink: "Cuéntanos el proyecto",
+    contactLink: "Cuéntanos tu proyecto",
   },
   contactPage: {
     title: "Hablemos",
@@ -193,7 +192,7 @@ const es: Dictionary = {
     whatsappText: "Hola, me gustaría hablar de un proyecto con 24SHOOTS.",
     instagram: "Instagram",
     form: {
-      legend: "Cuéntanos el proyecto",
+      legend: "Cuéntanos tu proyecto",
       name: "Nombre",
       email: "Email",
       organization: "Organización",

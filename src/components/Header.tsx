@@ -87,7 +87,7 @@ export function Header({ locale, labels }: { locale: Locale; labels: NavLabels }
               {item.label}
             </Link>
           ))}
-          <Link className="nav-cta" href={getRoute(locale, "contact")}>
+          <Link className="nav-cta cut" href={getRoute(locale, "contact")}>
             {labels.cta}
           </Link>
           <Link
@@ -130,7 +130,7 @@ export function Header({ locale, labels }: { locale: Locale; labels: NavLabels }
             ))}
           </nav>
           <div>
-            <Link className="menu-cta" href={getRoute(locale, "contact")}>
+            <Link className="menu-cta cut" href={getRoute(locale, "contact")}>
               {labels.cta}
             </Link>
             <div>

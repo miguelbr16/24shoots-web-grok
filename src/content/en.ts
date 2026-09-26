@@ -13,7 +13,7 @@ const en: Dictionary = {
     services: "Commissions",
     studio: "Studio",
     contact: "Contact",
-    cta: "Tell us about the project",
+    cta: "Tell us about your project",
     open: "Menu",
     close: "Close",
   },
@@ -22,7 +22,7 @@ const en: Dictionary = {
     emphasis: "for brands.",
     territories: "Brand content · Campaigns · Corporate events",
     place: "Valencia",
-    primary: "Tell us about the project",
+    primary: "Tell us about your project",
     secondary: "See the work",
     imageAlt:
       "Production gallery during a live show, with preview monitors and camera operation.",
@@ -43,6 +43,7 @@ const en: Dictionary = {
     {
       id: "brand",
       title: "Brand content",
+      line: "An image that holds from one piece to the next.",
       situation:
         "The brand needs an image that holds from one piece to the next, not a folder of unrelated films.",
       approach: "One visual direction, and the same judgement in the idea, the shoot and the cut.",
@@ -51,6 +52,7 @@ const en: Dictionary = {
     {
       id: "campaigns",
       title: "Campaigns",
+      line: "Several lengths and ratios, from the same shoot.",
       situation: "The work has to live in media, in more than one length and ratio.",
       approach:
         "The shoot is planned around use: several openings, several durations, horizontal and vertical.",
@@ -59,6 +61,7 @@ const en: Dictionary = {
     {
       id: "events",
       title: "Corporate events",
+      line: "An aftermovie and short cuts. The four films on this site belong here.",
       situation:
         "A congress, a gala or a presentation needs a visual record with a point of view, not only coverage.",
       approach: "Coverage with a narrative: what happened, who was there, and what should remain.",
@@ -66,30 +69,26 @@ const en: Dictionary = {
         "An aftermovie and short cuts. The four films published on this site belong here.",
     },
   ],
-  studioBand: {
-    kicker: "Studio",
-    lead: "A studio in Valencia.",
-    body: "We direct and produce visual content and communication for brands. The idea, the shoot and the finished piece pass through the same judgement.",
-    sequence: "First the brief. Then the shoot. Then the delivery.",
+  piece: {
+    title: "An event ends.",
+    emphasis: "The content stays.",
+    body: "The shoot leaves an aftermovie, the photographs and the cuts a brand can keep using.",
+    steps: ["Event", "Capture", "Piece", "Communication"],
   },
   close: {
-    title: "Tell us",
-    emphasis: "about the project",
-    body: "If there is a brand, a campaign or an event, write. We reply by email.",
-    cta: "Tell us about the project",
-  },
-  homePacks: {
-    kicker: "Packs",
-    line: "Three ways to commission it.",
-    note: "No prices on the site. The scope is quoted.",
+    title: "Do you have something",
+    emphasis: "to tell?",
+    body: "If there is a brand, a campaign or an event, write.",
+    cta: "Tell us about your project",
   },
   packsPage: {
     title: "Packs",
     description:
       "Three ways to commission 24SHOOTS: Full Pack, Audiovisual Pack and Community Management Pack. Scope is quoted; this page does not publish prices.",
-    intro: "Three scopes. The studio quotes them against the project. There are no prices here.",
+    intro: "Three ways of working with the studio. Scope is quoted against the project. There are no prices here.",
     quote: "Quoted to the brief.",
-    cta: "Tell us about the project",
+    stillCaption: "A 24SHOOTS shoot",
+    cta: "Tell us about your project",
     items: [
       {
         id: "completo",
@@ -178,7 +177,7 @@ const en: Dictionary = {
       "When the project asks for it, the team travels.",
     ],
     workLink: "See the work",
-    contactLink: "Tell us about the project",
+    contactLink: "Tell us about your project",
   },
   contactPage: {
     title: "Let's talk",
@@ -189,7 +188,7 @@ const en: Dictionary = {
     whatsappText: "Hello, I would like to talk about a project with 24SHOOTS.",
     instagram: "Instagram",
     form: {
-      legend: "Tell us about the project",
+      legend: "Tell us about your project",
       name: "Name",
       email: "Email",
       organization: "Organisation",

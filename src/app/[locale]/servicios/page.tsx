@@ -29,7 +29,7 @@ export default async function ServicesPage({
   const copy = getDictionary(locale);
 
   return (
-    <div className="page page-paper">
+    <div className="page page-paper encargos">
       <header className="page-intro">
         <p className="kicker">{copy.territoriesIntro.kicker}</p>
         <h1>{copy.servicesPage.title}</h1>
@@ -37,11 +37,14 @@ export default async function ServicesPage({
       </header>
       <Territories locale={locale} copy={copy} linked />
       <p className="capability">{copy.territoriesIntro.capability}</p>
-      <p>
-        <Link className="text-action" href={getRoute(locale, "work")}>
+      <div className="case-links">
+        <Link className="cut" href={getRoute(locale, "contact")}>
+          {copy.nav.cta}
+        </Link>
+        <Link className="cut-quiet" href={getRoute(locale, "work")}>
           {copy.servicesPage.workLink}
         </Link>
-      </p>
+      </div>
     </div>
   );
 }

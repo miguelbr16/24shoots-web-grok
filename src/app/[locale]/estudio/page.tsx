@@ -28,21 +28,23 @@ export default async function StudioPage({
   const copy = getDictionary(locale);
 
   return (
-    <div className="page page-paper">
+    <div className="page page-paper studio-page">
       <header className="page-intro">
         <h1>{copy.studioPage.title}</h1>
       </header>
-      <div className="studio-copy measure">
-        {copy.studioPage.paragraphs.map((paragraph) => (
-          <p key={paragraph}>{paragraph}</p>
+      <div className="studio-copy">
+        {copy.studioPage.paragraphs.map((paragraph, index) => (
+          <p className={index === 0 ? "studio-lead" : undefined} key={paragraph}>
+            {paragraph}
+          </p>
         ))}
       </div>
       <div className="case-links">
-        <Link className="text-action" href={getRoute(locale, "work")}>
-          {copy.studioPage.workLink}
-        </Link>
-        <Link className="text-action" href={getRoute(locale, "contact")}>
+        <Link className="cut" href={getRoute(locale, "contact")}>
           {copy.studioPage.contactLink}
+        </Link>
+        <Link className="cut-quiet" href={getRoute(locale, "work")}>
+          {copy.studioPage.workLink}
         </Link>
       </div>
     </div>

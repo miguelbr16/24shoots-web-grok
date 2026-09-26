@@ -160,7 +160,7 @@ export function ContactForm({
           {note}
         </p>
       ) : null}
-      <button className="submit" type="submit" disabled={status === "sending"}>
+      <button className="submit cut" type="submit" disabled={status === "sending"}>
         {status === "sending" ? labels.sending : labels.submit}
       </button>
     </form>

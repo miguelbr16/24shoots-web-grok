@@ -88,11 +88,11 @@ export default async function CasePage({
       <div className="measure">
         <p>{piece.description}</p>
         <div className="case-links">
-          <Link className="text-action" href={`${getRoute(locale, "services")}#events`}>
-            {copy.casePage.related}
-          </Link>
-          <Link className="text-action" href={getRoute(locale, "contact")}>
+          <Link className="cut" href={getRoute(locale, "contact")}>
             {copy.nav.cta}
+          </Link>
+          <Link className="cut-quiet" href={`${getRoute(locale, "services")}#events`}>
+            {copy.casePage.related}
           </Link>
         </div>
       </div>

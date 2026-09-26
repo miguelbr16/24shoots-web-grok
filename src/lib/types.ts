@@ -59,6 +59,7 @@ export interface WorkCopy {
 export interface TerritoryCopy {
   id: TerritoryId;
   title: string;
+  line: string;
   situation: string;
   approach: string;
   delivery: string;
@@ -96,14 +97,14 @@ export interface Dictionary {
   labels: { situation: string; approach: string; delivery: string };
   territoriesIntro: { kicker: string; title: string; capability: string };
   territories: TerritoryCopy[];
-  studioBand: { kicker: string; lead: string; body: string; sequence: string };
+  piece: { title: string; emphasis: string; body: string; steps: string[] };
   close: { title: string; emphasis: string; body: string; cta: string };
-  homePacks: { kicker: string; line: string; note: string };
   packsPage: {
     title: string;
     description: string;
     intro: string;
     quote: string;
+    stillCaption: string;
     cta: string;
     items: { id: PackId; title: string; lines: string[]; note: string }[];
   };

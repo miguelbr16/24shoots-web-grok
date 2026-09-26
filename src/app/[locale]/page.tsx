@@ -30,12 +30,21 @@ export default async function HomePage({
 }) {
   const locale = await readLocale(params);
   const copy = getDictionary(locale);
-  const packsHref = getRoute(locale, "packs");
 
   return (
     <>
       <JsonLd data={organizationJsonLd(locale)} />
       <section className="hero">
+        <div className="hero-media">
+          <Image
+            src={heroImage.src}
+            alt={copy.hero.imageAlt}
+            width={heroImage.width}
+            height={heroImage.height}
+            priority
+            sizes="(min-width: 860px) 62vw, 100vw"
+          />
+        </div>
         <div className="hero-copy">
           <h1 className="brand-line">
             {copy.hero.line} <em>{copy.hero.emphasis}</em>
@@ -46,23 +55,13 @@ export default async function HomePage({
             {copy.hero.place}
           </p>
           <div className="hero-actions">
-            <Link className="text-action" href={getRoute(locale, "contact")}>
+            <Link className="cut" href={getRoute(locale, "contact")}>
               {copy.hero.primary}
             </Link>
-            <Link className="text-action" href={getRoute(locale, "work")}>
+            <Link className="cut-quiet" href={getRoute(locale, "work")}>
               {copy.hero.secondary}
             </Link>
           </div>
-        </div>
-        <div className="hero-media">
-          <Image
-            src={heroImage.src}
-            alt={copy.hero.imageAlt}
-            width={heroImage.width}
-            height={heroImage.height}
-            priority
-            sizes="(min-width: 860px) 62vw, 100vw"
-          />
         </div>
       </section>
 
@@ -95,62 +94,37 @@ export default async function HomePage({
         })}
       </section>
 
-      <section className="sheet index-sheet" aria-labelledby="encargos-title">
-        <p className="kicker">{copy.territoriesIntro.kicker}</p>
-        <h2 id="encargos-title">{copy.territoriesIntro.title}</h2>
-        <ol className="index-list">
+      <section className="sheet dossier" aria-labelledby="continue-title">
+        <div className="continue">
+          <h2 id="continue-title">
+            {copy.piece.title} <em>{copy.piece.emphasis}</em>
+          </h2>
+          <ol className="continue-steps">
+            {copy.piece.steps.map((step) => (
+              <li key={step}>{step}</li>
+            ))}
+          </ol>
+          <p>{copy.piece.body}</p>
+        </div>
+        <ol className="index-list" aria-label={copy.territoriesIntro.title}>
           {copy.territories.map((territory, index) => (
             <li key={territory.id}>
               <Link href={`${getRoute(locale, "services")}#${territory.id}`}>
                 <span className="index">{String(index + 1).padStart(2, "0")}</span>
                 <h3>{territory.title}</h3>
               </Link>
-              <p>{territory.delivery}</p>
+              <p>{territory.line}</p>
             </li>
           ))}
         </ol>
-        <p className="capability">{copy.territoriesIntro.capability}</p>
       </section>
 
-      <section className="pack-band" aria-labelledby="packs-title">
-        <p className="kicker">{copy.homePacks.kicker}</p>
-        <h2 id="packs-title">{copy.homePacks.line}</h2>
-        <ol className="pack-names">
-          {copy.packsPage.items.map((item) => (
-            <li key={item.id}>
-              <Link href={`${packsHref}#${item.id}`}>{item.title}</Link>
-            </li>
-          ))}
-        </ol>
-        <p>{copy.homePacks.note}</p>
-        <Link className="text-action" href={packsHref}>
-          {copy.nav.packs}
-        </Link>
-      </section>
-
-      <section className="studio-band" aria-labelledby="studio-title">
-        <div className="studio-grid">
-          <h2 className="studio-lead" id="studio-title">
-            {copy.studioBand.lead}
-          </h2>
-          <div>
-            <p>{copy.studioBand.body}</p>
-            <p className="studio-sequence">{copy.studioBand.sequence}</p>
-            <p>
-              <Link className="text-action" href={getRoute(locale, "studio")}>
-                {copy.nav.studio}
-              </Link>
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section className="sheet close-band" aria-labelledby="close-title">
+      <section className="close-band" aria-labelledby="close-title">
         <h2 id="close-title">
           {copy.close.title} <em>{copy.close.emphasis}</em>
         </h2>
         <p>{copy.close.body}</p>
-        <Link className="text-action" href={getRoute(locale, "contact")}>
+        <Link className="cut" href={getRoute(locale, "contact")}>
           {copy.close.cta}
         </Link>
       </section>
