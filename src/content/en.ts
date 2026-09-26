@@ -92,7 +92,7 @@ const en: Dictionary = {
       alt: "Stage at the Premios Isabel Ferrer gala, with the award name on screen and the audience in the foreground.",
     },
     huhtamaki: {
-      kind: "Brand film",
+      kind: "Delivery film",
       summary: "Delivery film for Huhtamaki, shot in a corporate setting.",
       description:
         "Delivery film for Huhtamaki. The brand appears in the room where the piece takes place.",
@@ -226,7 +226,7 @@ const en: Dictionary = {
       paragraphs: [
         "We store the cookie-consent key in localStorage to remember whether you accept or reject measurement.",
         "The host may use technical cookies required to serve the site.",
-        "If you press Accept and measurement is configured (NEXT_PUBLIC_GA_MEASUREMENT_ID), Google Analytics is loaded.",
+        "If you press Accept and measurement is configured, Google Analytics is loaded.",
         "The link to Instagram does not set Meta cookies until you leave for that service.",
         "You can change your mind by clearing this site’s data in the browser.",
         "Contact: {{email}}. September 2026.",

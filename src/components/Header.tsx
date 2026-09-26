@@ -33,9 +33,26 @@ export function Header({ locale, labels }: { locale: Locale; labels: NavLabels }
   useEffect(() => {
     if (!open) return;
     const previous = document.activeElement as HTMLElement | null;
+    const root = document.getElementById(menuId);
     closeRef.current?.focus();
     const onKey = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setOpen(false);
+      if (event.key === "Escape") {
+        setOpen(false);
+        return;
+      }
+      if (event.key !== "Tab" || !root) return;
+      const items = [...root.querySelectorAll<HTMLElement>("a[href], button:not([disabled])")];
+      if (items.length === 0) return;
+      const first = items[0];
+      const last = items[items.length - 1];
+      const active = document.activeElement;
+      if (event.shiftKey && active === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && active === last) {
+        event.preventDefault();
+        first.focus();
+      }
     };
     document.addEventListener("keydown", onKey);
     document.body.style.overflow = "hidden";
@@ -44,7 +61,7 @@ export function Header({ locale, labels }: { locale: Locale; labels: NavLabels }
       document.body.style.overflow = "";
       previous?.focus();
     };
-  }, [open]);
+  }, [open, menuId]);
 
   const items = [
     { href: getRoute(locale, "work"), label: labels.work },

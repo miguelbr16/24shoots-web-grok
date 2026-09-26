@@ -96,7 +96,7 @@ const es: Dictionary = {
       alt: "Escenario de la gala Premios Isabel Ferrer, con el nombre del premio en pantalla y el público en primer término.",
     },
     huhtamaki: {
-      kind: "Película de marca",
+      kind: "Película de entrega",
       summary: "Pieza de entrega para Huhtamaki, en un entorno corporativo.",
       description:
         "Película de entrega para Huhtamaki. La marca aparece en la sala donde transcurre la pieza.",
@@ -230,7 +230,7 @@ const es: Dictionary = {
       paragraphs: [
         "Guardamos en localStorage la clave cookie-consent para recordar si aceptas o rechazas la medición.",
         "El alojamiento puede usar cookies técnicas necesarias para servir el sitio.",
-        "Si pulsas Aceptar y existe una medición configurada (NEXT_PUBLIC_GA_MEASUREMENT_ID), se carga Google Analytics.",
+        "Si pulsas Aceptar y hay una medición configurada, se carga Google Analytics.",
         "El enlace a Instagram no instala cookies de Meta hasta que sales hacia ese servicio.",
         "Puedes cambiar de decisión borrando los datos del sitio en el navegador.",
         "Contacto: {{email}}. Septiembre de 2026.",

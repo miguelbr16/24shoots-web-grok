@@ -23,6 +23,7 @@
 
 html {
   background: var(--bg);
+  scroll-padding-top: var(--header);
 }
 
 body {
@@ -851,7 +852,7 @@ h2.studio-lead {
     align-items: end;
   }
 
-  .work-row:nth-child(even) .work-copy {
+  .work-row:nth-child(even) img {
     order: 2;
   }
 

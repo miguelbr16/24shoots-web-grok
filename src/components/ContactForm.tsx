@@ -44,7 +44,6 @@ export function ContactForm({
 }) {
   const baseId = useId();
   const [status, setStatus] = useState<Status>("idle");
-  const [mailto, setMailto] = useState<string | null>(null);
   const note = messageFor(status, labels, email);
 
   async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
@@ -66,7 +65,6 @@ export function ContactForm({
     });
 
     setStatus("sending");
-    setMailto(href);
 
     try {
       const response = await fetch("/api/contact", {
@@ -103,8 +101,7 @@ export function ContactForm({
   if (status === "sent") {
     return (
       <p className="form-status" role="status">
-        {note}{" "}
-        <a href={`mailto:${email}`}>{email}</a>
+        {note}
       </p>
     );
   }
@@ -159,11 +156,8 @@ export function ContactForm({
         </div>
       </fieldset>
       {note ? (
-        <p className="form-status" role="status">
-          {note}{" "}
-          {mailto && (status === "fallback" || status === "limited" || status === "error") ? (
-            <a href={status === "fallback" ? mailto : `mailto:${email}`}>{email}</a>
-          ) : null}
+        <p className="form-status" role={status === "invalid" || status === "error" || status === "limited" ? "alert" : "status"}>
+          {note}
         </p>
       ) : null}
       <button className="submit" type="submit" disabled={status === "sending"}>
