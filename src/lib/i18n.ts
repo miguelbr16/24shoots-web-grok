@@ -10,6 +10,7 @@ export function isValidLocale(locale: string): locale is Locale {
 export const routes: Record<RouteKey, Record<Locale, string>> = {
   home: { es: "", en: "" },
   work: { es: "/trabajo", en: "/work" },
+  packs: { es: "/packs", en: "/packs" },
   services: { es: "/servicios", en: "/services" },
   studio: { es: "/estudio", en: "/studio" },
   contact: { es: "/contacto", en: "/contact" },
@@ -21,6 +22,7 @@ export const routes: Record<RouteKey, Record<Locale, string>> = {
 const segmentLocale: Record<string, Record<Locale, string>> = {
   trabajo: { es: "trabajo", en: "work" },
   work: { es: "trabajo", en: "work" },
+  packs: { es: "packs", en: "packs" },
   servicios: { es: "servicios", en: "services" },
   services: { es: "servicios", en: "services" },
   estudio: { es: "estudio", en: "studio" },

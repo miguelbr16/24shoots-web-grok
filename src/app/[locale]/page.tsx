@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { heroImage, workCatalog } from "@/content/works";
 import { JsonLd } from "@/components/JsonLd";
-import { Territories } from "@/components/Territories";
 import { getDictionary, getWorkCopy } from "@/lib/content";
 import { getRoute } from "@/lib/i18n";
 import { readLocale } from "@/lib/locale";
@@ -31,29 +30,15 @@ export default async function HomePage({
 }) {
   const locale = await readLocale(params);
   const copy = getDictionary(locale);
+  const packsHref = getRoute(locale, "packs");
 
   return (
     <>
       <JsonLd data={organizationJsonLd(locale)} />
       <section className="hero">
-        <div className="hero-media">
-          <Image
-            src={heroImage.src}
-            alt={copy.hero.imageAlt}
-            width={heroImage.width}
-            height={heroImage.height}
-            priority
-            sizes="100vw"
-          />
-        </div>
         <div className="hero-copy">
-          <h1>
-            <span className="brand">
-              24<span>SHOOTS</span>
-            </span>
-            <span className="brand-line">
-              {copy.hero.line} <em>{copy.hero.emphasis}</em>
-            </span>
+          <h1 className="brand-line">
+            {copy.hero.line} <em>{copy.hero.emphasis}</em>
           </h1>
           <p className="hero-meta">
             {copy.hero.territories}
@@ -69,15 +54,27 @@ export default async function HomePage({
             </Link>
           </div>
         </div>
+        <div className="hero-media">
+          <Image
+            src={heroImage.src}
+            alt={copy.hero.imageAlt}
+            width={heroImage.width}
+            height={heroImage.height}
+            priority
+            sizes="(min-width: 860px) 62vw, 100vw"
+          />
+        </div>
       </section>
 
       <section className="frames" aria-label={copy.workSection.label}>
         {workCatalog.map((work, index) => {
           const piece = getWorkCopy(locale, work.slug);
           if (!piece) return null;
+          const split =
+            index === 1 ? " is-split" : index === 2 ? " is-inset" : index === 3 ? " is-split is-left" : "";
           return (
             <Link
-              className="frame"
+              className={`frame${split}`}
               href={getRoute(locale, "work", `/${work.slug}`)}
               key={work.slug}
             >
@@ -86,23 +83,49 @@ export default async function HomePage({
                 alt={piece.alt}
                 width={work.width}
                 height={work.height}
-                sizes="100vw"
+                sizes="(min-width: 860px) 70vw, 100vw"
               />
               <span className="frame-caption">
                 <span className="index">{String(index + 1).padStart(2, "0")}</span>
                 <h2>{work.client}</h2>
-                <p>{piece.summary}</p>
+                <p>{piece.kind}</p>
               </span>
             </Link>
           );
         })}
       </section>
 
-      <section className="sheet" aria-labelledby="encargos-title">
+      <section className="sheet index-sheet" aria-labelledby="encargos-title">
         <p className="kicker">{copy.territoriesIntro.kicker}</p>
         <h2 id="encargos-title">{copy.territoriesIntro.title}</h2>
-        <Territories locale={locale} copy={copy} />
+        <ol className="index-list">
+          {copy.territories.map((territory, index) => (
+            <li key={territory.id}>
+              <Link href={`${getRoute(locale, "services")}#${territory.id}`}>
+                <span className="index">{String(index + 1).padStart(2, "0")}</span>
+                <h3>{territory.title}</h3>
+              </Link>
+              <p>{territory.delivery}</p>
+            </li>
+          ))}
+        </ol>
         <p className="capability">{copy.territoriesIntro.capability}</p>
+      </section>
+
+      <section className="pack-band" aria-labelledby="packs-title">
+        <p className="kicker">{copy.homePacks.kicker}</p>
+        <h2 id="packs-title">{copy.homePacks.line}</h2>
+        <ol className="pack-names">
+          {copy.packsPage.items.map((item) => (
+            <li key={item.id}>
+              <Link href={`${packsHref}#${item.id}`}>{item.title}</Link>
+            </li>
+          ))}
+        </ol>
+        <p>{copy.homePacks.note}</p>
+        <Link className="text-action" href={packsHref}>
+          {copy.nav.packs}
+        </Link>
       </section>
 
       <section className="studio-band" aria-labelledby="studio-title">

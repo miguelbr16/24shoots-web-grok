@@ -3,12 +3,15 @@ export type Locale = "es" | "en";
 export type RouteKey =
   | "home"
   | "work"
+  | "packs"
   | "services"
   | "studio"
   | "contact"
   | "legal"
   | "privacy"
   | "cookies";
+
+export type PackId = "completo" | "audiovisual" | "community";
 
 export type TerritoryId = "brand" | "campaigns" | "events";
 
@@ -72,6 +75,8 @@ export interface Dictionary {
   skip: string;
   nav: {
     work: string;
+    packs: string;
+    services: string;
     studio: string;
     contact: string;
     cta: string;
@@ -93,6 +98,15 @@ export interface Dictionary {
   territories: TerritoryCopy[];
   studioBand: { kicker: string; lead: string; body: string; sequence: string };
   close: { title: string; emphasis: string; body: string; cta: string };
+  homePacks: { kicker: string; line: string; note: string };
+  packsPage: {
+    title: string;
+    description: string;
+    intro: string;
+    quote: string;
+    cta: string;
+    items: { id: PackId; title: string; lines: string[]; note: string }[];
+  };
   workPage: {
     title: string;
     description: string;
@@ -140,6 +154,7 @@ export interface Dictionary {
   };
   footer: {
     work: string;
+    packs: string;
     services: string;
     contact: string;
     legal: string;

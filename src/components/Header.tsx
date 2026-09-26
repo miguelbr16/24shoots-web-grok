@@ -65,6 +65,8 @@ export function Header({ locale, labels }: { locale: Locale; labels: NavLabels }
 
   const items = [
     { href: getRoute(locale, "work"), label: labels.work },
+    { href: getRoute(locale, "packs"), label: labels.packs },
+    { href: getRoute(locale, "services"), label: labels.services },
     { href: getRoute(locale, "studio"), label: labels.studio },
     { href: getRoute(locale, "contact"), label: labels.contact },
   ] as const;

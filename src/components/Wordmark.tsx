@@ -1,7 +1,7 @@
 export function Wordmark() {
   return (
     <span className="wordmark">
-      24<span>SHOOTS</span>
+      <span className="mark">24</span>SHOOTS
     </span>
   );
 }

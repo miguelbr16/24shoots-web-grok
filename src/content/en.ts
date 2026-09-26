@@ -9,6 +9,8 @@ const en: Dictionary = {
   skip: "Skip to content",
   nav: {
     work: "Work",
+    packs: "Packs",
+    services: "Commissions",
     studio: "Studio",
     contact: "Contact",
     cta: "Tell us about the project",
@@ -75,6 +77,46 @@ const en: Dictionary = {
     emphasis: "about the project",
     body: "If there is a brand, a campaign or an event, write. We reply by email.",
     cta: "Tell us about the project",
+  },
+  homePacks: {
+    kicker: "Packs",
+    line: "Three ways to commission it.",
+    note: "No prices on the site. The scope is quoted.",
+  },
+  packsPage: {
+    title: "Packs",
+    description:
+      "Three ways to commission 24SHOOTS: Full Pack, Audiovisual Pack and Community Management Pack. Scope is quoted; this page does not publish prices.",
+    intro: "Three scopes. The studio quotes them against the project. There are no prices here.",
+    quote: "Quoted to the brief.",
+    cta: "Tell us about the project",
+    items: [
+      {
+        id: "completo",
+        title: "Full pack",
+        lines: [
+          "Content plan",
+          "Content strategy",
+          "Direct-message follow-up",
+          "Social content",
+          "Shoot and edit",
+          "Drone, when the brief includes it",
+        ],
+        note: "Strategy, production and management with one team.",
+      },
+      {
+        id: "audiovisual",
+        title: "Audiovisual pack",
+        lines: ["Shoot and edit", "Drone, when the brief includes it"],
+        note: "For a team that already handles social and needs the pieces.",
+      },
+      {
+        id: "community",
+        title: "Community management pack",
+        lines: ["Publishing", "Calendar", "Interaction", "Reporting"],
+        note: "Audiovisual production is commissioned separately, when it is needed.",
+      },
+    ],
   },
   workPage: {
     title: "Work",
@@ -176,6 +218,7 @@ const en: Dictionary = {
   },
   footer: {
     work: "Work",
+    packs: "Packs",
     services: "Commissions",
     contact: "Contact",
     legal: "Legal notice",

@@ -8,6 +8,7 @@ import type { RouteKey } from "@/lib/types";
 const pages: { key: RouteKey; priority: number }[] = [
   { key: "home", priority: 1 },
   { key: "work", priority: 0.8 },
+  { key: "packs", priority: 0.7 },
   { key: "services", priority: 0.8 },
   { key: "studio", priority: 0.6 },
   { key: "contact", priority: 0.6 },

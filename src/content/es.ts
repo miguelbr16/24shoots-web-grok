@@ -9,6 +9,8 @@ const es: Dictionary = {
   skip: "Saltar al contenido",
   nav: {
     work: "Trabajo",
+    packs: "Packs",
+    services: "Encargos",
     studio: "Estudio",
     contact: "Contacto",
     cta: "Cuéntanos el proyecto",
@@ -78,6 +80,46 @@ const es: Dictionary = {
     emphasis: "el proyecto",
     body: "Si hay una marca, una campaña o un evento, escribe. Respondemos por correo.",
     cta: "Cuéntanos el proyecto",
+  },
+  homePacks: {
+    kicker: "Packs",
+    line: "Tres maneras de encargarlo.",
+    note: "Sin precios en la web. El alcance se cotiza.",
+  },
+  packsPage: {
+    title: "Packs",
+    description:
+      "Tres formas de encargar 24SHOOTS: pack completo, pack audiovisual y pack community management. El alcance se cotiza; esta página no publica precios.",
+    intro: "Tres alcances. El estudio los cotiza según el proyecto. Aquí no hay precios.",
+    quote: "Presupuesto a medida.",
+    cta: "Cuéntanos el proyecto",
+    items: [
+      {
+        id: "completo",
+        title: "Pack completo",
+        lines: [
+          "Plan de contenido",
+          "Estrategia de contenido",
+          "Seguimiento de mensajes directos",
+          "Contenido para redes",
+          "Grabación y edición",
+          "Dron, si el encargo lo incluye",
+        ],
+        note: "Estrategia, producción y gestión en un mismo equipo.",
+      },
+      {
+        id: "audiovisual",
+        title: "Pack audiovisual",
+        lines: ["Grabación y edición", "Dron, si el encargo lo incluye"],
+        note: "Para quien ya tiene equipo de redes y necesita las piezas.",
+      },
+      {
+        id: "community",
+        title: "Pack community management",
+        lines: ["Publicación", "Calendario", "Interacción", "Reporting"],
+        note: "La producción audiovisual se encarga aparte, si hace falta.",
+      },
+    ],
   },
   workPage: {
     title: "Trabajo",
@@ -180,6 +222,7 @@ const es: Dictionary = {
   },
   footer: {
     work: "Trabajo",
+    packs: "Packs",
     services: "Encargos",
     contact: "Contacto",
     legal: "Aviso legal",

@@ -27,6 +27,9 @@ export function Footer({ locale }: { locale: Locale }) {
           <Link href={getRoute(locale, "work")}>{copy.footer.work}</Link>
         </li>
         <li>
+          <Link href={getRoute(locale, "packs")}>{copy.footer.packs}</Link>
+        </li>
+        <li>
           <Link href={getRoute(locale, "services")}>{copy.footer.services}</Link>
         </li>
         <li>

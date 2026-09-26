@@ -14,10 +14,13 @@ const RETIRED_SLUGS = new Set([
   "proyectos-personalizados",
   "campanas-pago",
   "produccion-aerea-dron",
-  "pack-completo",
-  "pack-audiovisual",
-  "pack-community-management",
 ]);
+
+const LEGACY_PACK: Record<string, string> = {
+  "pack-completo": "completo",
+  "pack-audiovisual": "audiovisual",
+  "pack-community-management": "community",
+};
 
 const LEGACY_WORK: Record<string, string> = {
   "hutamaki-aftermovie": "huhtamaki",
@@ -28,6 +31,10 @@ const LEGACY_WORK: Record<string, string> = {
 
 function servicesPath(locale: Locale): string {
   return locale === "es" ? "/es/servicios" : "/en/services";
+}
+
+function packsPath(locale: Locale): string {
+  return locale === "es" ? "/es/packs" : "/en/packs";
 }
 
 function studioPath(locale: Locale): string {
@@ -48,10 +55,16 @@ function legacyPath(locale: Locale, rest: string[]): string | null {
     return workPath(locale, mapped);
   }
 
-  if (first === "packs") return servicesPath(locale);
-
   if (first === "about" || first === "sobre-nosotros" || first === "nosotros") {
     return studioPath(locale);
+  }
+
+  if (
+    rest[1] &&
+    LEGACY_PACK[rest[1]] &&
+    (first === "servicios" || first === "services" || first === "packs")
+  ) {
+    return `${packsPath(locale)}#${LEGACY_PACK[rest[1]]}`;
   }
 
   if (
@@ -92,10 +105,17 @@ export function middleware(request: NextRequest) {
   requestHeaders.set("x-locale", locale);
 
   const legacy = legacyPath(locale, rest);
-  if (legacy && legacy !== `/${locale}${rest.length ? `/${rest.join("/")}` : ""}`) {
-    const url = request.nextUrl.clone();
-    url.pathname = legacy;
-    return NextResponse.redirect(url, 301);
+  if (legacy) {
+    const hashAt = legacy.indexOf("#");
+    const path = hashAt === -1 ? legacy : legacy.slice(0, hashAt);
+    const hash = hashAt === -1 ? "" : legacy.slice(hashAt + 1);
+    const current = `/${locale}${rest.length ? `/${rest.join("/")}` : ""}`;
+    if (path !== current) {
+      const url = request.nextUrl.clone();
+      url.pathname = path;
+      if (hash) url.hash = hash;
+      return NextResponse.redirect(url, 301);
+    }
   }
 
   if (rest[0]) {
