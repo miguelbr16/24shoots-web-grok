@@ -1,32 +1,44 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
+import { Instrument_Sans, Instrument_Serif } from "next/font/google";
+import { headers } from "next/headers";
 import "./globals.css";
 
-const inter = Inter({
+const sans = Instrument_Sans({
   subsets: ["latin"],
-  variable: "--font-sans",
   display: "swap",
+  variable: "--font-sans",
+});
+
+const serif = Instrument_Serif({
+  subsets: ["latin"],
+  weight: "400",
+  style: ["italic"],
+  display: "swap",
+  variable: "--font-serif",
 });
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#141414",
+  themeColor: "#0e0e0c",
 };
 
 export const metadata: Metadata = {
-  title: "24Shoots",
-  description: "Producción audiovisual y contenido para redes",
+  title: "24SHOOTS",
+  description: "Estudio creativo de contenido y comunicación visual para marcas.",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const headerStore = await headers();
+  const locale = headerStore.get("x-locale") === "en" ? "en" : "es";
+
   return (
-    <html lang="es" className={inter.variable}>
-      <body className="font-sans antialiased">{children}</body>
+    <html lang={locale} className={`${sans.variable} ${serif.variable}`}>
+      <body>{children}</body>
     </html>
   );
 }

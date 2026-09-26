@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { Territories } from "@/components/Territories";
 import { getDictionary } from "@/lib/content";
 import { getRoute } from "@/lib/i18n";
 import { readLocale } from "@/lib/locale";
@@ -14,13 +13,13 @@ export async function generateMetadata({
   const copy = getDictionary(locale);
   return buildMetadata({
     locale,
-    route: "services",
-    title: `${copy.servicesPage.title} — 24SHOOTS`,
-    description: copy.servicesPage.description,
+    route: "studio",
+    title: `${copy.studioPage.title} — 24SHOOTS`,
+    description: copy.studioPage.description,
   });
 }
 
-export default async function ServicesPage({
+export default async function StudioPage({
   params,
 }: {
   params: Promise<{ locale: string }>;
@@ -29,20 +28,23 @@ export default async function ServicesPage({
   const copy = getDictionary(locale);
 
   return (
-    <div className="page page-paper encargos">
+    <div className="page page-paper studio-page">
       <header className="page-intro">
-        <p className="kicker">{copy.territoriesIntro.kicker}</p>
-        <h1>{copy.servicesPage.title}</h1>
-        <p>{copy.servicesPage.intro}</p>
+        <h1>{copy.studioPage.title}</h1>
       </header>
-      <Territories locale={locale} copy={copy} linked />
-      <p className="capability">{copy.territoriesIntro.capability}</p>
+      <div className="studio-copy">
+        {copy.studioPage.paragraphs.map((paragraph, index) => (
+          <p className={index === 0 ? "studio-lead" : undefined} key={paragraph}>
+            {paragraph}
+          </p>
+        ))}
+      </div>
       <div className="case-links">
         <Link className="cut" href={getRoute(locale, "contact")}>
-          {copy.nav.cta}
+          {copy.studioPage.contactLink}
         </Link>
         <Link className="cut-quiet" href={getRoute(locale, "work")}>
-          {copy.servicesPage.workLink}
+          {copy.studioPage.workLink}
         </Link>
       </div>
     </div>

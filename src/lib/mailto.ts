@@ -1,15 +1,43 @@
-export function buildMailtoLink(
-  email: string,
-  locale: "es" | "en"
-): string {
-  const subject =
-    locale === "es"
-      ? "Consulta 24Shoots Media"
-      : "24Shoots Media enquiry";
-  const body =
-    locale === "es"
-      ? "Hola,\n\nMe gustaría recibir información sobre:\n\n- Servicio:\n- Fecha aproximada:\n- Presupuesto orientativo:\n\nGracias."
-      : "Hi,\n\nI would like information about:\n\n- Service:\n- Approximate date:\n- Budget:\n\nThank you.";
+import type { ContactPayload } from "./contact";
+import type { Locale } from "./types";
 
-  return `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+export function buildProjectMailto({
+  email,
+  locale,
+  subject,
+  fields,
+}: {
+  email: string;
+  locale: Locale;
+  subject: string;
+  fields: Partial<ContactPayload> & { needLabel?: string };
+}): string {
+  const lines =
+    locale === "es"
+      ? [
+          "Hola,",
+          "",
+          "Me gustaría hablar de un proyecto.",
+          "",
+          `Nombre: ${fields.name ?? ""}`,
+          `Organización: ${fields.organization ?? ""}`,
+          `Teléfono: ${fields.phone ?? ""}`,
+          `Encargo: ${fields.needLabel ?? ""}`,
+          "",
+          fields.message ?? "",
+        ]
+      : [
+          "Hello,",
+          "",
+          "I would like to talk about a project.",
+          "",
+          `Name: ${fields.name ?? ""}`,
+          `Organisation: ${fields.organization ?? ""}`,
+          `Phone: ${fields.phone ?? ""}`,
+          `Commission: ${fields.needLabel ?? ""}`,
+          "",
+          fields.message ?? "",
+        ];
+
+  return `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join("\n"))}`;
 }

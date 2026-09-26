@@ -1,66 +1,20 @@
-# 24Shoots Web — Media Agency Starter
+# 24SHOOTS
 
-Plantilla reutilizable Next.js para 24Shoots y futuras webs de clientes.
-
-## Inicio rápido
+Sitio del estudio: contenido de marca, campañas y eventos corporativos. Valencia.
 
 ```bash
 npm install
 npm run dev
 ```
 
-Abre [http://localhost:3000](http://localhost:3000) → redirige a `/es`.
+Abre [http://localhost:3000](http://localhost:3000). El idioma por defecto es `/es`.
 
-## Estructura
+## Contacto
 
-```
-config/site.json          # Marca, contacto, tema, legal
-content/es/               # Contenido en español (JSON)
-content/en/               # Contenido en inglés (JSON)
-src/components/           # UI reutilizable
-src/app/[locale]/         # Páginas por idioma
-scripts/new-site.mjs      # Crear web nueva para otro cliente
-```
+El correo público es `info@24shoots.es`.
 
-## Editar sin tocar código
+El formulario entrega el mensaje solo si existen `RESEND_API_KEY` y `RESEND_FROM` (un remitente verificado en Resend). Si no están, no confirma un envío falso: abre el correo del visitante con el mensaje escrito. Ver `.env.example`.
 
-| Qué cambiar | Archivo |
-|-------------|---------|
-| WhatsApp, email, Instagram | `config/site.json` |
-| Añadir/quitar servicio | `content/es/services.json` + `content/en/services.json` |
-| Portfolio | `content/es/portfolio.json` + `content/en/portfolio.json` |
-| Textos de páginas | `content/es/pages.json` + `content/en/pages.json` |
-| Logo | Sustituir `public/logo.jpg` |
+`NEXT_PUBLIC_SITE_URL` define el canonical, el sitemap y Open Graph. Mientras el dominio propio no esté conectado, el valor de `config/site.json` es la URL publicada.
 
-## Crear web para otro cliente
-
-```bash
-npm run new-site -- nombre-cliente
-```
-
-## Deploy (Vercel)
-
-1. Sube el repo a GitHub
-2. Importa en [vercel.com](https://vercel.com)
-3. Cuando tengas dominio → Settings → Domains → añade tu dominio
-4. Actualiza `config/site.json` → `url`
-
-**24Shoots (actual):** [24shoots-web.vercel.app](https://24shoots-web.vercel.app/es) — deploy automático desde `main`.
-
-## Documentación de avances
-
-Resumen funcional, funnel, rueda de clientes, portfolio y commits recientes:
-
-→ [`docs/AVANCES-2026-07-24.md`](docs/AVANCES-2026-07-24.md)
-
-## Formulario de contacto
-
-El MVP registra envíos en consola del servidor. Para producción, conecta Resend o SendGrid en `src/app/api/contact/route.ts`.
-
-## Pendiente del cliente
-
-- [ ] Logo en alta resolución → `public/logo.jpg`
-- [ ] WhatsApp y email reales → `config/site.json`
-- [ ] Datos legales → `config/site.json` + `content/*/pages.json`
-- [ ] Portfolio real (41 posts IG) → `content/*/portfolio.json`
-- [ ] Dominio → Vercel + `config/site.json`
+La razón social, el NIF y el domicilio fiscal no se muestran hasta que dejen de estar pendientes en `config/site.json`.
